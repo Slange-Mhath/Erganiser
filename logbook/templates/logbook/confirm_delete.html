@@ -1,0 +1,13 @@
+{% extends "logbook/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="mt-3">Delete Erg</h3>
+        <form method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <a class="btn btn-primary"
+               href="{{ request.META.HTTP_REFERER }}">Back</a>
+            <input class="btn delete-button" type="submit" value="Confirm">
+        </form>
+    </div>
+{% endblock %}

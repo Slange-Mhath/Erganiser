@@ -1,0 +1,48 @@
+<h3 class="mt-3"> {{ request.user.member.squad.squad_name }}
+    Scoreboard</h3>
+<div class="row">
+    <div class="col-12 scoreboard">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Pos</th>
+                <th scope="col">Name</th>
+                <th scope="col">Time</th>
+                <th scope="col">Split</th>
+                <th scope="col">Dist</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for erg in erg_tests %}
+                {% load auth_extras %}
+                {% if request.user.member.is_coach is True or erg.completed_by == request.user.member %}
+                    <tr class="user-row">
+                        <td> {{ forloop.counter }}</td>
+                        <td>{{ user.member }}</td>
+                        {% else %}
+                    <tr>
+                    <td> {{ forloop.counter }}</td>
+                    <td>{{ "Teammate" }}</td>
+                {% endif %}
+            <td>{{ erg.result_time }}</td>
+            <td>{{ erg.split_time }}</td>
+            <td>{{ erg.distance }}</td>
+            <td>{{ erg.completed_at|date:"d M Y" }}</td>
+            </tr>
+            {% empty %}
+                <tr class="no-hover">
+                    <td colspan="6" class="text-center"><strong><a
+                            href="{% url 'logbook:log-erg' %}">No Ergs
+                        submitted
+                        for this
+                        month. Be the
+                        first
+                        logging
+                        the metrics for this month</a></strong></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

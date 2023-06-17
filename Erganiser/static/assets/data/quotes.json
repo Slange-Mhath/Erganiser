@@ -1,0 +1,28 @@
+{
+    "motivational_quotes": [
+        {
+            "quote": "The only way to do great work is to love what you do.",
+            "author": "Steve Jobs"
+        },
+        {
+            "quote": "If you want to lift yourself up, lift up someone else.",
+            "author": "Booker T. Washington"
+        },
+        {
+            "quote": "Success is not final; failure is not fatal: It is the courage to continue that counts.",
+            "author": "Winston Churchill"
+        },
+        {
+            "quote": "If you have never failed, you have never lived.",
+            "author": "Unknown"
+        },
+        {
+            "quote": "If you can dream it, you can do it.",
+            "author": "Walt Disney"
+        },
+      {
+            "quote": "The road to excellence is always under construction.",
+            "author": "Lao Tzu"
+        }
+    ]
+}

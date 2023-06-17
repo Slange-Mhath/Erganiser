@@ -1,0 +1,94 @@
+{% load static %}
+
+<div class="card-body leaderboard">
+    <div class="row align-items-center">
+        <div class="col mt-2">
+            <h2>{{ current_squad.squad_name }} Leaderboard </h2>
+        </div>
+        <div class="col-auto">
+            <ul class="nav nav-pills justify-content-end mb-0">
+                {% for squad in squads %}
+                    <li class="nav-item">
+                        <form method="get">
+                            {% csrf_token %}
+                            <button class="nav-link text-white active"
+                                    type="submit"
+                                    name="squad"
+                                    value="{{ squad.id }}">{{ squad.squad_name }}
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% if erg_dist_of_month and splits_to_display %}
+        <div class="dist_of_month mt-5 text-center font-weight-bold">
+            <p>Best {{ erg_dist_of_month }}m. Splits</p>
+        </div>
+        <div class="leaderboard-positions mt-5">
+            <div class="row">
+                <div class="col-4">
+                    <div class="placement">
+                        <img src="{% static "assets/img/silver.svg" %}"
+                             alt="Victory Wreath in Silver"
+                             class="img-fluid"/>
+                        <p class="text-center mt-1">{{ splits_to_display.1.completed_by }}</p>
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="placement">
+                        <img src="{% static "assets/img/gold.svg" %}"
+                             alt="Victory Wreath in Gold"
+                             class="img-fluid"/>
+                        <p class="text-center mt-1">{{ splits_to_display.0.completed_by }}</p>
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="placement">
+                        <img src="{% static "assets/img/bronze.svg" %}"
+                             alt="Victory Wreath in Bronze"
+                             class="img-fluid"/>
+                        <p class="text-center mt-1">{{ splits_to_display.2.completed_by }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leaderboard-previews">
+            <div class="row">
+                <div class="col-12">
+                    <a href="{% url 'logbook:squad-scoreboard' current_year current_month %}">
+                        <table class="table my-3 pl-1 pr-1">
+                            <thead>
+                            <tr>
+                                <th scope="col">Pos.</th>
+                                <th scope="col">Athlete</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Split</th>
+                            </tr>
+                            </thead>
+                            <tbody class="leaderboard-previews-body">
+                            {% for erg in splits_to_display|slice:":3" %}
+                                <tr class="table-row">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ erg.completed_by }}</td>
+                                    <td>{{ erg.result_time }}</td>
+                                    <td>{{ erg.split_time }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="text-center font-weight-bold mt-3 mb-3">
+            <p>Oh, this looks so empty here!</p>
+            <p>Encourage your athletes to do their metrics!</p>
+        </div>
+    {% endif %}
+
+</div>

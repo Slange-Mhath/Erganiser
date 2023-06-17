@@ -1,0 +1,68 @@
+{% extends "logbook/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img"
+                 src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading mt-3">Hey {{ user.username }}</h2>
+            </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h3 class="border-bottom mb-4 mt-3">Change Profile
+                    Info</h3>
+                {{ u_form|crispy }}
+                {{ m_form|crispy }}
+                <h3 class="border-bottom mb-4 mt-5">Concept2 Logbook
+                    Settings</h3>
+                <p>
+                    Before you can use the Concept2 Logbook integration, you
+                    need to authorize the Erganiser to access your Concept2
+                    Logbook account.
+                    Click the button below to go to the Concept2 website and
+                    authorize the Erganiser.
+                </p>
+                {% if not profile.c2_access_token %}
+                    <a href="https://log.concept2.com/oauth/authorize?client_id=CNsDld8pD359afoYwgXYXvya4EEZazkcbaFG8yJe&scope=user:read,results:read&response_type=code&redirect_uri={{ request.scheme }}://{{ request.get_host }}/oauth_with_c2">
+                        <button type="button" class="btn btn-primary">Authorize
+                            Access to Concept2 Logbook
+                        </button>
+                    </a>
+                {% else %}
+                    <p>You have authorized the Erganiser to access your
+                        Concept2 Logbook account.</p>
+                {% endif %}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type="Submit"
+                        title="{{ u_form.title }}" data-toggle="tooltip"
+                        data-placement="top">Update
+                </button>
+            </div>
+        </form>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h3 class="border-bottom mb-4">Change Password</h3>
+                {{ pw_change_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type="Submit">Update
+                    Password
+                </button>
+                <div>
+                    <small>
+                        <a class="" href="{% url 'reset_password' %}">Forgotten
+                            your
+                            password or
+                            username?</a>
+                    </small>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

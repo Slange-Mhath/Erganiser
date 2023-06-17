@@ -1,0 +1,122 @@
+{% load static %}
+
+{% if not splits_to_display %}
+    <div class="card-body leaderboard deactivated">
+        <div class="row align-items-center">
+            <div class="col mt-2">
+                <h2>{{ current_squad }} Leaderboard</h2>
+            </div>
+        </div>
+        <div class="text-center font-weight-bold mt-3 mb-3">
+            <p>Oh, this looks so empty here!</p>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-primary"
+               href="{% url 'logbook:log-erg-test' %}">
+                Be the First
+                to log
+                your
+                Erg Metrics!
+            </a>
+        </div>
+    </div>
+{% else %}
+    <div class="card-body leaderboard">
+        <div class="row align-items-center">
+            <div class="col mt-2">
+                <h2>{{ current_squad }} Leaderboard</h2>
+            </div>
+            <div class="col-auto mt-2">
+                <p>Dist for {{ current_month_char }}:
+                    <br/> {{ erg_dist_of_month }}
+                    m.</p>
+            </div>
+        </div>
+        <div class="leaderboard-positions mt-3">
+            <div class="row">
+                <div class="col-4">
+                    <div class="placement">
+                        <img src="{% static "assets/img/silver.svg" %}"
+                             alt="Victory Wreath in Silver"
+                             class="img-fluid"/>
+                        <p class="text-center mt-1">{{ splits_to_display.1.split_time }}</p>
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="placement">
+                        <img src="{% static "assets/img/gold.svg" %}"
+                             alt="Victory Wreath in Gold"
+                             class="img-fluid"/>
+                        <p class="text-center mt-1">{{ splits_to_display.0.split_time }}</p>
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="placement">
+                        <img src="{% static "assets/img/bronze.svg" %}"
+                             alt="Victory Wreath in Bronze"
+                             class="img-fluid"/>
+                        <p class="text-center mt-1">{{ splits_to_display.2.split_time }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="current-user-position">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <hr class="mx-auto w-50">
+                    <h2>Your current Position:</h2>
+                    <h2 class="font-weight-bold">{{ users_position }}</h2>
+                    <hr class="mx-auto w-50">
+                    <div class="quote">
+                        {% include "logbook/partials/_quote.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leaderboard-previews">
+            <div class="row">
+                <div class="col-12">
+                    <a href="{% url 'logbook:squad-scoreboard' current_year current_month %}">
+                        <table class="table my-3 pl-1 pr-1">
+                            <thead>
+                            <tr>
+                                <th scope="col">Pos.</th>
+                                <th scope="col">Dist</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Split</th>
+                            </tr>
+                            </thead>
+                            <tbody class="leaderboard-previews-body">
+                            {% if splits_to_display|length > 3 %}
+                                {% for erg in splits_to_display|slice:":3" %}
+                                    <tr class="table-row">
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ erg.distance }}</td>
+                                        <td>{{ erg.result_time }}</td>
+                                        <td>{{ erg.split_time }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                {% for erg in splits_to_display %}
+                                    {% if erg == users_best_split %}
+                                        <tr class="table-row">
+                                            {% else %}
+                                        <tr class="table-row">
+                                    {% endif %}
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ erg.distance }}</td>
+                                <td>{{ erg.result_time }}</td>
+                                <td>{{ erg.split_time }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

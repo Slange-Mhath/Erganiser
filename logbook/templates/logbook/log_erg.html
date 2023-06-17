@@ -1,0 +1,31 @@
+{% extends "logbook/base.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <div class="container">
+        <h3 class="mt-3">Enter your Erg results</h3>
+        <div class="log-erg-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary log-erg-btn" type="submit">Log
+                    your
+                    Erg
+                    Workout
+                </button>
+            </form>
+            {% if request.resolver_match.view_name == 'logbook:log-erg' %}
+                {% if user.profile.last_c2_sync %}
+                    <a href="{% url 'logbook:sync_c2_erg_data' latest='latest' %}"
+                       class="btn
+    btn-primary sync-c2-btn">Sync latest C2Logbook Data</a>
+                {% endif %}
+                <a href="{% url 'logbook:sync_c2_erg_data' %}"
+                   class="btn btn-primary sync-c2-btn">Sync
+                    All C2Logbook Data</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{#https://django-crispy-forms.readthedocs.io/en/latest/crispy_tag_forms.html#}

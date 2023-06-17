@@ -1,0 +1,149 @@
+{% extends "logbook/base.html" %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        {% if request.user.member.is_coach is True %}
+            {% include "logbook/partials/_squad_scoreboard_coach.html" with  squad_erg_tests=squad_erg_tests %}
+        {% else %}
+            {% include "logbook/partials/_squad_scoreboard_member.html" with  erg_tests=erg_tests %}
+        {% endif %}
+
+        <div class="d-flex justify-content-around">
+            {% for dist in distances %}
+                <form method="get">
+                    {% csrf_token %}
+                    <button type="submit"
+                            class="btn mx-2 d-block d-md-inline btn-{{ dist }}"
+                            name="distance" value="{{ dist }}">{{ dist }} m.
+                    </button>
+                </form>
+            {% endfor %}
+        </div>
+
+
+        <div class="pagination-button mt-2">
+            <div class="d-flex justify-content-between">
+                {% if previous_month %}
+                    <a class="btn btn-primary"
+                       href="{% url 'logbook:squad-scoreboard' previous_month.year previous_month.month %}">Previous
+                        Month</a>
+                {% else %}
+                    <a class="btn btn-primary disabled" href="">Previous
+                        Month</a>
+                {% endif %}
+
+
+                {% if next_month %}
+                    <a class="btn btn-primary"
+                       href="{% url 'logbook:squad-scoreboard' next_month.year next_month.month %}">Next
+                        Month</a>
+                {% else %}
+                    <a class="btn btn-primary disabled" href="">Next Month</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {##}
+    {##}
+    {##}
+    {#            <div class="container-fluid">#}
+    {#            <h3>{{ request.user.member.squad.squad_name }} Scoreboard</h3>#}
+    {#            <div class="row">#}
+    {#                <div class="col-12">#}
+    {#                    <table class="table table-bordered">#}
+    {#                        <thead>#}
+    {#                        <tr>#}
+    {#                            <th scope="col">Athlete</th>#}
+    {#                            <th scope="col">Time</th>#}
+    {#                            <th scope="col">Split Time</th>#}
+    {#                            <th scope="col">Distance</th>#}
+    {#                            <th scope="col">Completed At</th>#}
+    {#                        </tr>#}
+    {#                        </thead>#}
+    {#                        <tbody>#}
+    {#                        {% for erg in erg_tests %}#}
+    {#                            <tr>#}
+    {#                                {% load auth_extras %}#}
+    {#                                {% if request.user.member.is_coach is True or erg.completed_by == request.user.member %}#}
+    {#                                    <td class="bg-warning">{{ user.member }}</td>#}
+    {#                                {% else %}#}
+    {#                                    <td>{{ "Teammate" }}</td>#}
+    {#                                {% endif %}#}
+    {#                                <td>{{ erg.result_time }}</td>#}
+    {#                                <td>{{ erg.split_time }}</td>#}
+    {#                                <td>{{ erg.distance }}</td>#}
+    {#                                <td>{{ erg.completed_at|date:"d M Y" }}</td>#}
+    {#                            </tr>#}
+    {#                        {% endfor %}#}
+    {#                        </tbody>#}
+    {#                    </table>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#            <div class="d-flex justify-content-between">#}
+    {#                {% if previous_month %}#}
+    {#                    <a class="btn btn-primary"#}
+    {#                       href="{% url 'logbook:squad-scoreboard' previous_month.year previous_month.month %}">Previous#}
+    {#                        Month</a>#}
+    {#                {% else %}#}
+    {#                    <a class="btn btn-primary disabled" href="">Previous#}
+    {#                        Month</a>#}
+    {#                {% endif %}#}
+    {#                {% for dist in distances %}#}
+    {#                    <form method="get">#}
+    {#                        {% csrf_token %}#}
+    {#                        <button type="submit" class="btn btn-{{ dist }}"#}
+    {#                                name="distance" value="{{ dist }}">{{ dist }} m.#}
+    {#                        </button>#}
+    {#                    </form>#}
+    {#                {% endfor %}#}
+    {#                {% if next_month %}#}
+    {#                    <a class="btn btn-primary"#}
+    {#                       href="{% url 'logbook:squad-scoreboard' next_month.year next_month.month %}">Next#}
+    {#                        Month</a>#}
+    {#                {% else %}#}
+    {#                    <a class="btn btn-primary disabled" href="">Next Month</a>#}
+    {#                {% endif %}#}
+    {#            </div>#}
+    {##}
+    {##}
+    {#    {% endif %}#}
+
+
+    {#    {% if previous_month %}#}
+    {#        <li>#}
+    {#            <a href="{% url 'logbook:squad-scoreboard' previous_month.year previous_month.month %}">Previous#}
+    {#                month</a></li>#}
+    {#    {% endif %}#}
+    {#    {% if next_month %}#}
+    {#        Next Month: {{ next_month|date:"F Y" }}#}
+    {#    {% endif %}#}
+
+
+{% endblock %}

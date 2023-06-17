@@ -1,0 +1,83 @@
+{% extends "logbook/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="mt-3">Recent Ergs </h3>
+        <div class="erg-history-header">
+            <div class="row">
+                <div class="col-4">
+                    <p>Date</p>
+                </div>
+                <div class="col-4">
+                    <p>Duration</p>
+                </div>
+                <div class="col-4">
+                    <p>Distance</p>
+                </div>
+            </div>
+        </div>
+        {% for erg in page_obj %}
+            <a href="{% url 'logbook:erg-detail' erg.pk %}">
+                <div class="erg-preview card mt-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="erg-attr">
+                                    <p>{{ erg.completed_at|date:"d.m.y" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="erg-attr">
+                                    <p>{{ erg.result_time }}</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="erg-attr">
+                                    <p>{{ erg.distance }}m <i
+                                            class="fa-solid fa-chevron-right"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {#                <li>#}
+            {#                    <a href="{% url 'logbook:erg-detail' erg.pk %}">{{ erg.name }}#}
+            {#                        - {{ erg.completed_by }}#}
+            {#                        - {{ erg.completed_at.date }}</a> <a#}
+            {#                        href="{% url 'logbook:update-erg' erg.pk %}">Update</a>#}
+            {#                    <a#}
+            {#                            href="{% url 'logbook:delete-erg' erg.pk %}">x</a>#}
+            {#                </li>#}
+        {% empty %}
+            <div class="text-center font-weight-bold mt-3">
+                <p>Your Logbook appears to be empty!</p>
+                <a class="btn btn-primary"
+                   href="{% url 'logbook:log-erg' %}">Make your
+                    first Logbook Entry!
+                </a>
+            </div>
+        {% endfor %}
+        <div class="pagination justify-content-center mt-3">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="secondary" href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Prev.</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="secondary"
+               href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+        </div>
+    </div>
+
+
+{% endblock %}

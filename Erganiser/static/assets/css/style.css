@@ -1,0 +1,18 @@
+.navbar-dark {
+    background-color: #002147;
+}
+
+body {
+    font-family: "Inter", Helvetica, Arial, sans-serif;
+    /*background-color: #001734;*/
+    background-color: #000f2c;
+}
+
+body p, h1, h2, h3, h4, h5, a, label {
+    color: #C7C7C7;
+}
+
+
+body a:hover {
+    text-decoration: none;
+}

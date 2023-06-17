@@ -1,0 +1,345 @@
+[
+
+   {
+      "model":"logbook.finishederg",
+      "pk":"ea29b358-f8af-4d4c-b77c-bf5969405bfe",
+      "fields":{
+         "description":"2000 Meter Test flat out",
+         "distance":2000,
+         "name":"2000 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:02:15",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:08:00",
+         "completed_by":1,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"b6119ce5-4ff6-4385-9cc9-d15c6ddbc51f",
+      "fields":{
+         "description":"1400 Meter Test flat out",
+         "distance":1400,
+         "name":"1400 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:02:00",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:00",
+         "completed_by":1,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"9ee326c6-af98-4cbf-a123-36df6c090ec1",
+      "fields":{
+         "description":"100 Meter Test flat out",
+         "distance":100,
+         "name":"100 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:02:00",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:00:55",
+         "completed_by":1,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"29c016b8-39e0-4ac3-b352-fd74a1add5b7",
+      "fields":{
+         "description":"2000 Meter Test flat out",
+         "distance":2000,
+         "name":"2000 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:02:15",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:20",
+         "completed_by":2,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"1c754714-a667-447b-b455-ca0517716a3c",
+      "fields":{
+         "description":"1400 Meter Test flat out",
+         "distance":1400,
+         "name":"1400 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:02:00",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:06:55",
+         "completed_by":2,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"c89d0f29-2fe0-4967-99bf-8406382b6b01",
+      "fields":{
+         "description":"100 Meter Test flat out",
+         "distance":100,
+         "name":"100 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:00:55",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:00:50",
+         "completed_by":2,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"7af2f766-2521-4321-a3ff-e450f8221468",
+      "fields":{
+         "description":"2000 Meter Test flat out",
+         "distance":2000,
+         "name":"2000 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:55",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:45",
+         "completed_by":3,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"693d5310-b1dd-400f-b885-e8ad0563b2be",
+      "fields":{
+         "description":"1400 Meter Test flat out",
+         "distance":1400,
+         "name":"1400 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:50",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:30",
+         "completed_by":3,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"2d099f0f-031e-4fd8-a74b-8d28cca8d1c3",
+      "fields":{
+         "description":"100 Meter Test flat out",
+         "distance":100,
+         "name":"100 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:00:30",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:00:35",
+         "completed_by":3,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"d401ed63-ab26-43ef-8e63-3d3cc768ec0d",
+      "fields":{
+         "description":"2000 Meter Test flat out",
+         "distance":2000,
+         "name":"2000 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:35",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:20",
+         "completed_by":4,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"b69fe4a0-288c-4ae8-9adb-66d012be19f9",
+      "fields":{
+         "description":"1400 Meter Test flat out",
+         "distance":1400,
+         "name":"1400 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:30",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:10",
+         "completed_by":4,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"80d4de23-bf71-4076-b4dc-c142b1b33054",
+      "fields":{
+         "description":"100 Meter Test flat out",
+         "distance":100,
+         "name":"100 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:00:40",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:00:45",
+         "completed_by":4,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"f34b1b71-51c8-4b97-901f-0472b13bde43",
+      "fields":{
+         "description":"2000 Meter Test flat out",
+         "distance":2000,
+         "name":"2000 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:15",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:00",
+         "completed_by":5,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"ce791752-45d3-4d3e-8342-550af438eed3",
+      "fields":{
+         "description":"1400 Meter Test flat out",
+         "distance":1400,
+         "name":"1400 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:10",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:06:55",
+         "completed_by":5,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"bd25ec5f-2f5f-4252-a5be-4d7f917adb98",
+      "fields":{
+         "description":"100 Meter Test flat out",
+         "distance":100,
+         "name":"100 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:00:20",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:00:25",
+         "completed_by":5,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"33384894-c05f-498b-a404-782b409b8fe2",
+      "fields":{
+         "description":"2000 Meter Test flat out",
+         "distance":2000,
+         "name":"2000 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:03:15",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:07:00",
+         "completed_by":6,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"ce791752-45d3-4d3e-8342-550af438eed3",
+      "fields":{
+         "description":"1400 Meter Test flat out",
+         "distance":1400,
+         "name":"1400 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:01:10",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:06:55",
+         "completed_by":6,
+         "planned_erg":null
+      }
+   },
+   {
+      "model":"logbook.finishederg",
+      "pk":"bd25ec5f-2f5f-4252-a5be-4d7f917adb98",
+      "fields":{
+         "description":"100 Meter Test flat out",
+         "distance":100,
+         "name":"100 Test",
+         "effort":null,
+         "created_at":"2023-01-05",
+         "split_time":"00:00:20",
+         "avg_spm":null,
+         "avg_heartrate":null,
+         "is_test":true,
+         "completed_at":"2023-01-05",
+         "result_time":"00:00:25",
+         "completed_by":6,
+         "planned_erg":null
+      }
+   }
+]

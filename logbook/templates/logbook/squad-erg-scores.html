@@ -1,0 +1,15 @@
+{% extends "logbook/base.html" %}
+
+{% block content %}
+<h1>Erg Scores</h1>
+    <ul>
+{% for erg in squads_erg_tests %}
+    <li>{{ erg.name }} - {{ erg.completed_by }} - {{ erg.completed_at.date }} {% load auth_extras %}  {% if request.user.member.is_coach == True %} {{ erg.completed_by }} {% endif %}</li>
+{% empty %}
+    <li>No ergs yet.</li>
+{% endfor %}
+</ul>
+        <a href="{% url 'logbook:log-erg' %}">Enter new Erg results</a>
+
+
+{% endblock %}

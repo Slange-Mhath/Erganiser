@@ -1,0 +1,32 @@
+{% extends "logbook/base.html" %}
+
+{% block content %}
+    <div class="erg-detail card mt-3">
+        <p class="date text-right mt-3 mr-3">
+            {{ object.completed_at|date:"d.m.Y" }}</p>
+        <h3 class="ml-3">{{ object.name }}</h3>
+        <hr class="underline">
+        <div class="card-body">
+            {% if object.is_test == True %}
+                <p>This your metrics entry for
+                    {{ object.completed_at|date:"F" }}</p>
+            {% endif %}
+            <div class="row">
+                <div class="col-6"><p>Time</p></div>
+                <div class="col-6"><p>{{ object.result_time }}</p></div>
+                <div class="col-6"><p>Distance</p></div>
+                <div class="col-6"><p>{{ object.distance }}</p></div>
+                <div class="col-6"><p>Split</p></div>
+                <div class="col-6"><p>{{ object.split_time }}</p></div>
+            </div>
+            <a class="btn btn-primary" href=
+                    "{% url 'logbook:update-erg' pk=object.id %}">Edit Erg</a>
+            <a class="btn btn-danger delete-button" href=
+                    "{% url 'logbook:delete-erg' pk=object.id %}">Delete Erg</a>
+
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

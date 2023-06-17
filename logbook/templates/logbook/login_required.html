@@ -1,0 +1,25 @@
+{% extends "logbook/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <h1 class="display-4 mt-3">Welcome to Erganiser!</h1>
+                <p class="lead mt-4">To get the most out of this application,
+                    please
+                    login to your account</p>
+                <hr class="my-4">
+                <p class="mb-4">If you do not have an account, please click the
+                    link
+                    to
+                    sign
+                    up.</p>
+                <a class="btn btn-primary btn-lg" href="{% url 'login' %}"
+                   role="button">Login</a>
+                <a class="btn btn-primary btn-lg ml-2" href=
+                        "{% url 'register' %}"
+                   role="button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "logbook/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-4">
+                <div class="add-erg card my-3 mt-5">
+                    <a class="log-erg" href="{% url 'logbook:log-erg' %}">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center index">
+                                <div class="col-2 justify-content-center">
+                                    <i class="fa-solid fa-plus fa-3x"></i>
+                                </div>
+                                <div class="col-10 justify-content-center mt-2">
+                                    <h2 class="index-page">
+                                        Log New Erg</h2></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-4">
+                <div class="card my-3 card bg-primary-dark dashnnum-card dashnum-card-small overflow-hidden my-3">
+                    {#                    <a href="{% url 'logbook:erg-history' %}">#}
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mt-2">
+                                <h2>Recent Ergs</h2>
+                            </div>
+                            <div class="col-auto">
+                                <ul class="nav nav-pills justify-content-end mb-0">
+                                    <li class="nav-item">
+                                        <form method="get">
+                                            {% csrf_token %}
+                                            {% if q != "False" %}
+                                                <button class="nav-link text-white active"
+                                                        type="submit"
+                                                        name="isTest"
+                                                        value="False">All
+                                                </button>
+                                            {% else %}
+                                                <button class="nav-link
+                                                text-white inactive"
+                                                        type="submit"
+                                                        name="isTest"
+                                                        value="False">All
+                                                </button>
+                                            {% endif %}
+                                        </form>
+                                    </li>
+                                    <li class="nav-item">
+                                        <form method="get">
+                                            {% csrf_token %}
+                                            {% if q != "True" %}
+                                                <button class="nav-link text-white active"
+                                                        type="submit"
+                                                        name="isTest"
+                                                        value="True">Test
+                                                </button>
+                                            {% else %}
+                                                <button class="nav-link
+                                                text-white inactive"
+                                                        type="submit"
+                                                        name="isTest"
+                                                        value="True">Test
+                                                </button>
+                                            {% endif %}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% if my_last_ergs %}
+                            {% include "logbook/partials/_erg_history.html" with  ergs=my_last_ergs %}
+                        {% else %}
+                            <div class="text-center font-weight-bold mt-3">
+                                <p>Your Logbook appears to be empty!</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="text-center">
+                        {% if my_last_ergs %}
+                            <a class="btn btn-primary"
+                               href="{% url 'logbook:erg-history' %}">Show More
+                                ...</a>
+                        {% else %}
+                            <a class="btn btn-primary"
+                               href="{% url 'logbook:log-erg' %}">Make your
+                                first Logbook Entry!
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-4">
+                <div class="card my-3">
+                    {% if user.member.is_coach %}
+                        {% include "logbook/partials/_leaderboard_coach.html" %}
+                    {% else %}
+                        {% include "logbook/partials/_leaderboard_member.html" %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {#    <a href="{% url 'logbook:squad-scoreboard' current_year current_month %}">#}
+
+
+
+{% endblock %}

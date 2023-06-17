@@ -1,0 +1,103 @@
+name: Django CI/CD Workflow
+run-name: ${{ github.actor }} let's check if your code meets our standards
+on:
+  pull_request:
+    branches:
+      - main
+      - development
+  push:
+    branches:
+      - main
+      - development
+
+
+jobs:
+  health-check-job: # health check job for testing and code formatting check
+    runs-on: ubuntu-latest # os for running the job
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: logbook
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache dependency
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Setup python env
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Check Python version
+        run: python --version
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: black check
+        uses: psf/black@stable
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
+        with:
+          ignore: "F401"
+          exclude: ".git,__pycache__,docs/source/conf.py,old,build,dist,migrations,./env,.tox"
+          max-line-length: "88"
+      - name: Run Make Migrations
+        env:
+          SECRET_KEY: f&&-y#xx=u0!o3x+%5t-7=95wa5p9syn5vn6v@f*(j8w@hu+ob
+          C2_CLIENT_ID: TESTDUMMY
+          C2_CLIENT_SECRET: TESTDUMMY
+          AWS_ACCESS_KEY_ID: TESTDUMMY
+          AWS_SECRET_ACCESS_KEY: TESTDUMMY
+          C2_API_KEY: TESTDUMMY
+          C2_REFRESH_KEY: TESTDUMMY
+          AWS_STORAGE_BUCKET_NAME: Erganiser
+          AWS_SES_REGION_NAME: eu-west-2
+          AWS_S3_SIGNATURE_VERSION: s3v4
+          AWS_S3_FILE_OVERWRITE: False
+          AWS_DEFAULT_ACL: None
+          AWS_S3_VERIFY: True
+          DEFAULT_FILE_STORAGE: storages.backends.s3boto3.S3Boto3Storage
+        run: python3 manage.py makemigrations
+      - name: Run Migrate
+        env:
+          SECRET_KEY: f&&-y#xx=u0!o3x+%5t-7=95wa5p9syn5vn6v@f*(j8w@hu+ob
+          C2_CLIENT_ID: TESTDUMMY
+          C2_CLIENT_SECRET: TESTDUMMY
+          AWS_ACCESS_KEY_ID: TESTDUMMY
+          AWS_SECRET_ACCESS_KEY: TESTDUMMY
+          C2_API_KEY: TESTDUMMY
+          C2_REFRESH_KEY: TESTDUMMY
+          AWS_STORAGE_BUCKET_NAME: Erganiser
+          AWS_SES_REGION_NAME: eu-west-2
+          AWS_S3_SIGNATURE_VERSION: s3v4
+          AWS_S3_FILE_OVERWRITE: False
+          AWS_DEFAULT_ACL: None
+          AWS_S3_VERIFY: True
+          DEFAULT_FILE_STORAGE: storages.backends.s3boto3.S3Boto3Storage
+        run: python3 manage.py migrate
+      - name: Run Tests
+        env:
+          SECRET_KEY: f&&-y#xx=u0!o3x+%5t-7=95wa5p9syn5vn6v@f*(j8w@hu+ob
+          C2_CLIENT_ID: TESTDUMMY
+          C2_CLIENT_SECRET: TESTDUMMY
+          AWS_ACCESS_KEY_ID: TESTDUMMY
+          AWS_SECRET_ACCESS_KEY: TESTDUMMY
+          C2_API_KEY: TESTDUMMY
+          C2_REFRESH_KEY: TESTDUMMY
+          AWS_STORAGE_BUCKET_NAME: Erganiser
+          AWS_SES_REGION_NAME: eu-west-2
+          AWS_S3_SIGNATURE_VERSION: s3v4
+          AWS_S3_FILE_OVERWRITE: False
+          AWS_DEFAULT_ACL: None
+          AWS_S3_VERIFY: True
+          DEFAULT_FILE_STORAGE: storages.backends.s3boto3.S3Boto3Storage
+        run: python3 manage.py test

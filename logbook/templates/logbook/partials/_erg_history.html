@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>{{ heading }}</h1>
+    <div class="erg-history-header">
+        <div class="row">
+            <div class="col-4">
+                <p>Date</p>
+            </div>
+            <div class="col-4">
+                <p>Duration</p>
+            </div>
+            <div class="col-4">
+                <p>Distance</p>
+            </div>
+        </div>
+    </div>
+    {% for erg in ergs %}
+        <a href="{% url 'logbook:erg-detail' erg.pk %}">
+            <div class="erg-preview card mt-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="erg-attr">
+                                <p>{{ erg.completed_at|date:"d.m.y" }}</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="erg-attr">
+                                <p>{{ erg.result_time }}</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="erg-attr">
+                                <p>{{ erg.distance }}m <i
+                                        class="fa-solid fa-chevron-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {#                <li>#}
+        {#                    <a href="{% url 'logbook:erg-detail' erg.pk %}">{{ erg.name }}#}
+        {#                        - {{ erg.completed_by }}#}
+        {#                        - {{ erg.completed_at.date }}</a> <a#}
+        {#                        href="{% url 'logbook:update-erg' erg.pk %}">Update</a>#}
+        {#                    <a#}
+        {#                            href="{% url 'logbook:delete-erg' erg.pk %}">x</a>#}
+        {#                </li>#}
+    {% empty %}
+        <li>No ergs yet.</li>
+    {% endfor %}
+</div>

@@ -1,0 +1,24 @@
+{% extends "logbook/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h2 class="border-bottom my-3">Join Erganizer</h2>
+                {{ u_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="Submit">Sign Up
+                </button>
+            </div>
+        </form>
+        <div class="border-top pt-1">
+            <small class="text-muted">Already have an Account? <a class="ml-2"
+                                                                  href="{% url 'login' %}">Sign
+                In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
